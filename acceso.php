@@ -25,12 +25,19 @@ if (isset($_REQUEST["btnIngresar"])) {
 			$_SESSION["user"]["nombre"]=$nombre;
 			$_SESSION["user"]["apellido"]=$apellido;
 			$_SESSION["user"]["nivel"]=$nivel;
-			header("location:opciones.php");
+
+		if ($_SESSION["user"]["nivel"]==1) {
+		header("location:../citas/vistaCitasD.php");
+
+		}else  {
+			header("location:../citas/vistaSecre.php");
+
+		}
 		}else{
 			$cont++;
 			if ($cont<=3) {
 				echo"<script>alert('Datos Incorrectos')</script>";
-			echo"<script language='javascript'>window.location='loginAgain.php'</script>";
+			echo"<script language='javascript'>window.location='login.php'</script>";
 			}else{
 			echo "<script>alert('Datosfsfd')</script>";
 			}
@@ -47,7 +54,7 @@ else{
 
 if (isset($_REQUEST["cerrar"])) {
 	session_destroy();
-	header("location:vistaCitas2.php");
+	header("location:login.php");
 }
 
 
